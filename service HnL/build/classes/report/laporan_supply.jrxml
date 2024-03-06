@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4526cde-bc06-4f29-b836-ef191bbe8599">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="8"/>
+	<parameter name="tglAwal" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tglAkhir" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT sp.kode_supply, sp.tgl_supply, sp.total_supply, spr.id_supplier, sp.status 
+FROM supply sp 
+INNER JOIN supplier spr ON spr.id_supplier=sp.id_supplier 
+WHERE (tgl_supply BETWEEN $P{tglAwal} AND $P{tglAkhir})
+GROUP BY sp.kode_supply, sp.tgl_supply, sp.total_supply, spr.id_supplier, sp.status]]>
+	</queryString>
+	<field name="kode_supply" class="java.lang.String"/>
+	<field name="tgl_supply" class="java.sql.Date"/>
+	<field name="total_supply" class="java.lang.Double"/>
+	<field name="id_supplier" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<variable name="kode_supply_1" class="java.lang.Integer" resetType="Page" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{kode_supply}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="129" y="33" width="302" height="30" uuid="fee541a5-6f63-4123-a5da-8b2cfeb071a9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Jl. Joyo Boyo Majapahit.  No. 976, Wono sableng, Kec. Sableng Lawas, kab. Semanggi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="10" width="302" height="23" uuid="97c0b2d4-7074-4435-a1a8-dde83891f746"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MY SERVICE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="69" y="10" width="60" height="53" uuid="778de915-0ebd-473f-90a3-5997e3c34393"/>
+				<imageExpression><![CDATA["C:\\Users\\SyafiqUbai\\OneDrive\\Dokumen\\TUGAS\\Semester 3\\BDL\\logo Service.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="2" y="81" width="553" height="1" uuid="b7919137-3b30-46d5-bb39-76b2b1b0d858"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="222" y="1" width="147" height="20" uuid="1e957945-3791-425e-8f82-e54d092078dd"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Riwayat Supply]]></text>
+			</staticText>
+			<textField evaluationTime="Page">
+				<reportElement x="59" y="41" width="100" height="20" uuid="24d6286f-c4c8-4d5f-ab1d-ff50dc597037"/>
+				<textFieldExpression><![CDATA[$V{kode_supply_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="41" width="57" height="20" uuid="4e39597e-b9f4-45b9-ae8f-c31543996f9b"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Jumlah :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" uuid="61f2b2e6-dadc-41af-99ef-67650adb0895"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Kode Supply]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="0" width="111" height="20" uuid="72b03569-c2f7-45c9-bcca-e9745699b87a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ID Supplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="111" height="20" uuid="dfe97b17-8f4f-4a5f-8323-2427640648bc"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="111" height="20" uuid="df1225b0-934a-4e69-948c-9184d92492f3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="111" height="20" uuid="42de7910-a176-40cd-993a-46950262c29b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="e39ea453-e661-48c3-acbf-dc31d0de3c06"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{kode_supply}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="222" y="0" width="111" height="20" uuid="85aa28f9-5172-4f12-9012-3ae371ae14c6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tgl_supply}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="111" height="20" uuid="6b3c3298-40eb-41d3-86d4-1597178d5f27"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{total_supply}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="111" height="20" uuid="010d70d0-a6d3-4179-92db-b0f8b41b1d10"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="20" uuid="0b90ce9d-2bc1-4e52-98af-5648af5fc875"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="77" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="412" y="0" width="110" height="20" uuid="ace3a504-303f-4d9a-9489-9dc04def0bfc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="364" y="0" width="48" height="20" uuid="03ffc38c-c308-4242-86cc-3d31f9631024"/>
+				<text><![CDATA[Surabaya,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="386" y="51" width="136" height="20" uuid="8e20b028-698c-4f9f-9142-a5984b0c0317"/>
+				<text><![CDATA[M Syafiq Ubaidillah]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="73" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

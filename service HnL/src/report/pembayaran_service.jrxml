@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cacff25e-1b75-4b60-b7d8-483f3c47013f">
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="33"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="3740f65e-f922-479a-9395-74eac5ff8a62"/>
+	<parameter name="id_pembayaranService" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_det" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ps.id_pembayaranservice, s.kode_service, ks.id_kasir, ks.nama_kasir, s.total_service, ps.kurang_bayar, ps.tgl_pembayaranservice, ps.status, o.kode_onderdil, o.nama_onderdil, o.stok, bc.kode_barang, bc.nama_customer, s.tgl_service, s.harga_service, o.harga_onderdil, det_ser.jmh_service, det_ser.subtotal, bc.nama_barang, m.nama_mekanik, bc.type_barang, ps.sudah_bayar
+FROM pembayaran_service ps 
+INNER JOIN service s ON s.kode_service=ps.kode_service 
+INNER JOIN mekanik m ON m.id_mekanik=s.id_mekanik
+INNER JOIN kasir ks ON ks.id_kasir=ps.id_kasir 
+INNER JOIN detail_service det_ser ON det_ser.kode_service=s.kode_service
+INNER JOIN onderdil o ON o.kode_onderdil=det_ser.kode_onderdil
+INNER JOIN barang_customer bc ON bc.kode_barang=s.kode_barang
+WHERE ps.id_pembayaranservice=$P{id_pembayaranService} 
+AND s.kode_service=$P{id_det}]]>
+	</queryString>
+	<field name="id_pembayaranservice" class="java.lang.String"/>
+	<field name="kode_service" class="java.lang.String"/>
+	<field name="id_kasir" class="java.lang.String"/>
+	<field name="nama_kasir" class="java.lang.String"/>
+	<field name="total_service" class="java.lang.Double"/>
+	<field name="kurang_bayar" class="java.lang.Double"/>
+	<field name="tgl_pembayaranservice" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="kode_onderdil" class="java.lang.String"/>
+	<field name="nama_onderdil" class="java.lang.String"/>
+	<field name="stok" class="java.lang.Integer"/>
+	<field name="kode_barang" class="java.lang.String"/>
+	<field name="nama_customer" class="java.lang.String"/>
+	<field name="tgl_service" class="java.lang.String"/>
+	<field name="harga_service" class="java.lang.Double"/>
+	<field name="harga_onderdil" class="java.lang.Double"/>
+	<field name="jmh_service" class="java.lang.Integer"/>
+	<field name="subtotal" class="java.lang.Double"/>
+	<field name="nama_barang" class="java.lang.String"/>
+	<field name="nama_mekanik" class="java.lang.String"/>
+	<field name="type_barang" class="java.lang.String"/>
+	<field name="sudah_bayar" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="114" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="109" width="552" height="1" uuid="7e6f53c6-3439-4b7d-9026-3263b7ccb2c1"/>
+			</line>
+			<staticText>
+				<reportElement x="111" y="1" width="138" height="23" uuid="b149c462-78c3-41fc-8ef1-f18c1832d392"/>
+				<textElement>
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[My. SERVICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="24" width="155" height="20" uuid="6d5199c0-f932-4ee4-9cf6-8f1e4df12142"/>
+				<text><![CDATA[JL. Joyo Boyo Majapahit]]></text>
+			</staticText>
+			<image>
+				<reportElement x="32" y="1" width="64" height="65" uuid="dc13635d-09c7-4ce5-a30c-2635da6018d1"/>
+				<imageExpression><![CDATA["C:\\Users\\SyafiqUbai\\OneDrive\\Dokumen\\TUGAS\\Semester 3\\BDL\\logo Service.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="444" y="84" width="100" height="20" uuid="5c9cf76e-86b2-4d01-8ce8-de4d7a07acb1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FAKTUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="44" width="155" height="20" uuid="f78bd22a-5512-4b8d-99f0-fcb632a3eaf5"/>
+				<text><![CDATA[Telp. 0831-1560-9447]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="64" width="155" height="20" uuid="b80dc95d-2cf6-4283-bd6a-62f41458b5b4"/>
+				<text><![CDATA[Email: joyoservice88@gmail.com]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="124" splitType="Stretch">
+			<textField>
+				<reportElement x="452" y="20" width="100" height="20" uuid="1d31c98a-78a9-48e8-988e-b03aac062f39"/>
+				<textElement>
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_pembayaranservice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="20" width="100" height="20" uuid="2fba9795-55aa-44f0-9c87-ce16aa564196"/>
+				<textElement>
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ID Pembayaran	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="0" width="100" height="20" uuid="bb532bae-2232-4942-a126-055d73a9a3b7"/>
+				<text><![CDATA[Kode Service	:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="452" y="0" width="100" height="20" uuid="4a82f3b5-896a-4621-bb96-01a5403064c4"/>
+				<textFieldExpression><![CDATA[$F{kode_service}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="40" width="100" height="20" uuid="5c84d9ad-1452-475c-8152-2cd37cbb023b"/>
+				<text><![CDATA[Mekanik	 	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="20" width="53" height="20" uuid="bcad22d5-b1d7-4552-a6c2-cf526fbaca9d"/>
+				<text><![CDATA[Nama   : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="20" width="100" height="20" uuid="aa131b41-7724-4943-91fa-fa6eb96a0950"/>
+				<textFieldExpression><![CDATA[$F{nama_customer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="60" width="153" height="20" uuid="13de9179-eba5-4671-8a74-f9223f2c458c"/>
+				<textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="40" width="53" height="20" uuid="b12499af-06ae-415e-89c6-f316bf3f9628"/>
+				<text><![CDATA[Barang : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="452" y="40" width="100" height="20" uuid="0c97ddd1-b34a-451f-9235-f6a415b8826a"/>
+				<textFieldExpression><![CDATA[$F{nama_mekanik}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="452" y="102" width="100" height="20" uuid="c5598d73-e894-4664-8aec-5366b16c2f8a"/>
+				<textFieldExpression><![CDATA[$F{tgl_service}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="102" width="100" height="20" uuid="353fe97f-01f1-4986-8c7d-fe6ff9c59f5c"/>
+				<text><![CDATA[Tanggal Service	: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="40" width="100" height="20" uuid="3c5d987f-80a6-46bf-89c6-cbe7007b2993"/>
+				<textFieldExpression><![CDATA[$F{type_barang}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="60" width="100" height="20" uuid="329319f1-bc71-4884-aa25-ee4eee74246d"/>
+				<text><![CDATA[Status Bayar	:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="452" y="60" width="100" height="20" uuid="ba4c9d03-056f-4364-a16e-fd20ea7bbc99"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="55" height="20" uuid="17f8e76b-f95b-4b58-8198-bd462670e87a"/>
+				<text><![CDATA[ID	:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="0" width="100" height="20" uuid="3a050b26-bf1b-4e61-8081-f695b9282c60"/>
+				<textFieldExpression><![CDATA[$F{kode_barang}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" uuid="bb6edc33-784f-4a6d-bf6d-354864429716"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Kode Onderdil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="0" width="111" height="20" uuid="2012bb23-0c81-42f9-9cf7-5ad0cd65dd2e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="111" height="20" uuid="c81a78b0-bd03-492f-b617-f009a8368ce9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="111" height="20" uuid="8f6f7540-9239-4332-9bb3-738310789146"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="111" height="20" uuid="4831336f-c023-4a5c-977c-576f1a4bd18b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="096c743c-0e8d-43d2-8b8d-b7802223ae83"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{kode_onderdil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="111" height="20" uuid="5148be26-815f-4d37-a937-f7706157c8a8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nama_onderdil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="111" height="20" uuid="e9a0edbc-9ff1-4fc5-990e-6163df8d589b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{harga_onderdil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="111" height="20" uuid="13122523-218b-460d-93ac-927ab686f653"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jmh_service}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="20" uuid="08d1ef96-6018-4e40-88c0-464f9219a94e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="252" splitType="Stretch">
+			<textField>
+				<reportElement x="414" y="22" width="138" height="20" uuid="0febe4e8-4aef-4c98-a790-a4cfa929dac9"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{total_service}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="22" width="94" height="20" uuid="d21e54e2-30a1-430b-abc8-c9c1d1e7e3a5"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<text><![CDATA[Total 		: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="414" y="2" width="138" height="20" uuid="153d9089-3ea1-48eb-bd61-c49875dd945c"/>
+				<textFieldExpression><![CDATA[$F{harga_service}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="2" width="94" height="20" uuid="8d25ab99-565c-476b-8d42-939e28cff400"/>
+				<text><![CDATA[Harga Jasa	:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="62" width="94" height="20" uuid="18ab165f-33e5-47d7-a881-6da9efa0cfcd"/>
+				<text><![CDATA[Kurang bayar	:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="414" y="62" width="138" height="20" uuid="029274ab-b16b-45c6-a1fc-832814eaa1cb"/>
+				<textFieldExpression><![CDATA[$F{kurang_bayar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="401" y="124" width="77" height="20" uuid="3cb6fcf4-c3ca-4612-a300-544d7c9797bd"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Surabaya,  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="401" y="183" width="151" height="20" uuid="54149a24-c1c5-4e89-982c-c8955e1aa3c0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nama_kasir}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="42" width="94" height="20" uuid="850d3403-a2a4-40ee-963c-49d1464fd8da"/>
+				<text><![CDATA[Membayar	: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="478" y="124" width="74" height="20" uuid="4d333d11-fb68-4ef5-a8e1-687b0339c79d"/>
+				<textFieldExpression><![CDATA[$F{tgl_service}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="42" width="138" height="20" uuid="0fe9cbe2-74b8-4e77-9eda-1ad89c6a323c"/>
+				<textFieldExpression><![CDATA[$F{sudah_bayar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
